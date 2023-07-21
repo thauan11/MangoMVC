@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MVC</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <script src="https://kit.fontawesome.com/1ef87b5e1c.js" crossorigin="anonymous"></script>
+  </head>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    nav {
+      height: 50px;
+      background-color: black;
+      color: white;
+      position: relative;
+      display: flex;
+      justify-content: end;
+    }
+
+    nav a {
+      height: 40px;
+      width: 40px;/*
+      position: absolute;
+      right: 20px;*/
+      display: grid;
+      place-items: center;
+      margin: 5px;
+      transition: background-color .5s;
+      border-radius: 50px;
+      text-decoration: none;
+    }
+
+    nav a:visited {
+      color: white;
+    }
+
+    nav a:hover {
+      background-color: white;
+      color: black;
+    }
+
+  </style>
+
+  <nav>
+
+    <%# <%= link_to (new_mango_path) do %
+      <i class="fa-solid fa-plus"></i>
+    <% end %>
+
+    <%= link_to (mangos_path) do%>
+      <i class="fa-solid fa-house"></i>
+    <% end %>
+  </nav>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>

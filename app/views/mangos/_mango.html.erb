@@ -1,0 +1,79 @@
+<style>
+    .centraliza {
+        margin: 3% 0;
+        display: grid;
+        place-items: center;
+    }
+
+    .centraliza2 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .back-btn a,
+    .back-btn a:visited {
+        color: black;
+    }
+
+    i {
+        transform: scale(1.1);
+        transition: ease-in-out .2s;
+    }
+
+    i:hover {
+        transform: scale(1.2);
+    }
+
+    .form {
+        padding: 20px 0;
+        display: grid;
+        place-items: center;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+    }
+
+    input {
+        margin-bottom: 20px;
+    }
+
+    input {
+        height: 20px;
+    }
+
+    input:last-child {
+        height: 50px;
+    }
+
+</style>
+
+
+<div class="centraliza">
+    <div class="centraliza2">
+
+        <div class="back-btn">
+            <%= link_to (:back) do %>
+                <i class="fa-solid fa-arrow-left"></i>
+            <% end %>
+        </div>
+
+        <div class="form">
+            <%= form_with(model: @mango) do |form| %>
+                <%= form.label :Descrição %>
+                <%= form.text_field :descricao %>
+
+                <%= form.label :Valor %>
+                <%= form.text_field :valor %>
+
+                <%= form.label :Banco %>
+                <%= form.text_field :banco %>
+
+                <%= form.submit :'Salvar' %>
+            <% end %>
+        </div>
+
+    </div>
+</div>

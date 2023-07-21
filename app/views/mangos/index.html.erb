@@ -1,0 +1,94 @@
+<style>
+    table, td, th {
+        border: 1px solid black;
+        padding: 0 10px;
+    }
+
+    table {
+        border-collapse: collapse;
+    }
+
+    th {
+        height: 50px;
+    }
+
+    td {
+        text-align: center;
+    }
+
+    tr:last-child {
+        span: 3;
+        border: 1px solid red;
+    }
+
+    .centraliza {
+        margin: 3% 0;
+        display: grid;
+        place-items: center;
+    }
+
+    h1 {
+        padding-bottom: 30px;
+    }
+
+    button,
+    a,
+    a:visited,
+    a i {
+        border: none;
+        text-decoration: none;
+        cursor: pointer;
+        background-color: none;
+        color: black;
+        transform: scale(1);
+        transition: ease-in-out .2s;
+    }
+
+    button {
+        height: 100%;
+        background-color: white;
+    }
+
+    button:hover,
+    a i:hover {
+        transform: scale(1.1);
+    }
+</style>
+
+
+<div class="centraliza">
+    <h1> Mangos! </h1>
+
+    <p style="color: green"><%= notice %></p>
+    <table>
+        <tr>
+            <th>Descrição</th>
+            <th>Valor</th>
+            <th> </th>
+            <th> </th>
+        </tr>
+
+        <% @mangos.each do |mango| %>
+        <tr>
+            <td><%= mango.descricao%></td>
+            <td><%= mango.valor%></td>
+            <td>
+                <%= link_to (mango) do %>
+                    <i class="fa-solid fa-arrow-right"></i>
+                <% end %>
+            </td>
+            <td>
+                <%= button_to mango, method: :delete, form:{data:{turbo_confirm: 'Tem certeza que deseja apagar?'}} do %>
+                    <i class="fa-solid fa-trash"></i>
+                <% end %>
+            </td>
+        </tr>
+        <% end %>
+
+    </table>
+
+    <%= link_to (new_mango_path) do %>
+        <i class="fa-solid fa-plus" style="padding-top: 10px;"></i>
+    <% end %>
+
+</div>

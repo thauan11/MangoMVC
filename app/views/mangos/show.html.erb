@@ -1,0 +1,104 @@
+<style>
+    div {
+        display: flex;
+        flex-direction: row;
+        padding-bottom: 20px;
+    }
+
+    p {
+        font-weight: bold;
+        padding-right: 5px;
+    }
+
+    .lado-a-lado {
+        display: flex;
+        justify-items: center;
+        justify-content: space-between;
+    }
+
+    .centraliza {
+        margin: 3% 0;
+        display: grid;
+        place-items: center;
+    }
+
+    .centraliza2 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    button,
+    a,
+    a:visited {
+        border: none;
+        text-decoration: none;
+        cursor: pointer;
+        background-color: none;
+        color: black;
+    }
+
+    button {
+        height: 100%;
+        background-color: white;
+    }
+
+    .lado-a-lado a,
+    .lado-a-lado button {
+        display: flex;
+        flex-direction: row;
+        text-decoration: none;
+        color: black;
+        transform: scale(1.1);
+        transition: ease-in-out .2s;
+    }
+
+    .lado-a-lado a:hover,
+    .lado-a-lado button:hover  {
+        transform: scale(1.2);
+    }
+</style>
+
+<div class="centraliza">
+    <div class="centraliza2">
+        <p style="color: green"><%= notice %></p>
+
+        <div>
+            <p>Descrição:</p>
+            <%= @mango.descricao%>
+        </div>
+
+        <div>
+            <p>Valor:</p>
+            <%= @mango.valor%>
+        </div>
+
+        <div>
+            <p>Banco:</p>
+            <%= @mango.banco%>
+        </div>
+
+        <div>
+            <p>Data de criação:</p>
+            <%= @mango.created_at%>
+        </div>
+
+        <div>
+            <p>Ultima atualização:</p>
+            <%= @mango.updated_at%>
+        </div>
+
+        <div class="lado-a-lado">
+            <%= link_to (mangos_path) do%>
+                <i class="fa-solid fa-arrow-right fa-rotate-180"></i>
+            <% end %>
+
+            <%= link_to (edit_mango_path) do %>
+                <i class="fa-solid fa-pen"></i>
+            <% end %>
+
+            <%= button_to @mango, method: :delete, form:{data:{turbo_confirm: 'Tem certeza que deseja apagar?'}} do %>
+                <i class="fa-solid fa-trash"></i>
+            <% end %>
+        </div>
+    </div>
+</div>
